@@ -1,3 +1,16 @@
+CREATE TABLE menu_option (
+    -- 1. 기본 키 (PK): Auto-increment되는 단일 ID
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    -- 2. 메뉴 코드 (FK 역할): VARCHAR(10), 필수
+    menu_code VARCHAR(10) NOT NULL,
+    -- 3. 옵션 그룹 이름 (매핑 대상): VARCHAR(50), 필수
+    option_group_name VARCHAR(50) NOT NULL,
+    -- PK 정의
+    PRIMARY KEY (id),
+    -- 복합 유니크 제약 조건 추가
+    CONSTRAINT UK_menu_option_mapping UNIQUE (menu_code, option_group_name)
+);
+
 INSERT INTO menu_option (menu_code, option_group_name) VALUES
 ('ADE-001', '텀블러'), ('ADE-001', '제로사이다변경'), ('ADE-001', '당도선택'), ('ADE-001', '토핑선택'),
 ('ADE-002', '텀블러'), ('ADE-002', '제로사이다변경'), ('ADE-002', '당도선택'), ('ADE-002', '토핑선택'),
