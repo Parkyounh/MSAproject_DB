@@ -23,14 +23,16 @@ CREATE TABLE material_master (
 
 CREATE TABLE option_master (
     option_id INT AUTO_INCREMENT PRIMARY KEY,
-    option_group_name VARCHAR(50) COMMENT '옵션 그룹',
-    option_name VARCHAR(100) NOT NULL,
-    default_price INT NOT NULL COMMENT '옵션 기본 가격',
-    changing_material VARCHAR(100) COMMENT '재고 차감/추가 재료명',
-    quantity DECIMAL(8, 2) COMMENT '재료 변동 수량',
-    unit VARCHAR(10) COMMENT '단위',
-    process_method VARCHAR(20) COMMENT '처리 방식 (예: 추가, 제외)'
+    option_group_name VARCHAR(50) NOT NULL COMMENT '옵션 그룹',
+    option_name VARCHAR(100) NOT NULL COMMENT '옵션 이름',
+    default_price INT NOT NULL COMMENT '옵션 비용',
+    from_material VARCHAR(100) NULL COMMENT '기존 재료(삭제되는 재료)',
+    to_material   VARCHAR(100) NULL COMMENT '변경 후 재료(추가되는 재료)',
+    quantity DECIMAL(8,2) NOT NULL COMMENT '변동 수량',
+    unit VARCHAR(10) NOT NULL COMMENT '단위',
+    process_method ENUM('추가', '제거', '변경') NOT NULL COMMENT '처리 방식'
 );
+
 
 CREATE TABLE orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
