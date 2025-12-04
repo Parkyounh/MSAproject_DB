@@ -48,7 +48,8 @@ FILES_TO_LOAD = [
             'optionn_group_name': 'option_group_name',
             'option_name': 'option_name',
             'default_price': 'default_price',
-            'changing_material': 'changing_material',
+            'from_material': 'from_material',
+            'to_material': 'to_material',
             'quantity': 'quantity',
             'unit': 'unit',
             'process_method': 'process_method'
